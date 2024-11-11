@@ -1,16 +1,21 @@
 <script>
+  import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 </script>
 <template>
   <div class="flex flex-col h-screen bg-blue-600">
-    <header class="shrink-0 flex justify-between bg-white px-4 py-3">
-      <a class="text-2xl font-black tracking-tight " href="/">kanboard</a>
-      <nav>
-        <a class="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-100" href="#">My boards</a>
-        <button class="ml-3">
-          <img class="h-9 w-9 inline rounded-full" src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--telegram-logo-man-ui-pack-miscellaneous-icons-840229.png?f=webp&w=256" alt="">
-        </button>
-      </nav>
-    </header>
+    <!-- Header -->
+      <header class="shrink-0 flex justify-between bg-white px-4 py-3">
+        <a class="text-2xl font-black tracking-tight " href="/">kanboard</a>
+        <nav>
+          <a class="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-100" href="#">My boards</a>
+          <button class="ml-3">
+            <img class="h-9 w-9 inline rounded-full" src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--telegram-logo-man-ui-pack-miscellaneous-icons-840229.png?f=webp&w=256" alt="">
+          </button>
+
+
+        </nav>
+      </header>
+    <!-- Header -->
 
     <main class="flex-1 overflow-hidden">
       <div class="flex flex-col h-full">
@@ -28,7 +33,7 @@
         <div class="flex-1 overflow-x-auto">
           <div class="inline-flex h-full items-start px-4 pb-4 space-x-4">
             <div
-            v-for="item in Array.from({length:7})"
+            v-for="item in Array.from({length:7})" :key="item"
             class="w-72 max-h-full  bg-gray-200 flex flex-col rounded-md">
               <div class="flex items-center justify-between px-3 py-2">
                 <h3 class="text-sm font-semibold text-gray-700">Backlog</h3>
@@ -37,13 +42,17 @@
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                   </svg>
-            </button>
+
+
+                </button>
+
+
               </div>
               <div class="px-3 pb-3 flex flex-col overflow-hidden">
                 <div class="px-3 flex-1 overflow-y-auto">
                   <ul class="space-y-3">
                     <li
-                    v-for="item in Array.from({length:100})"
+                    v-for="item in Array.from({length:100})" :key="item"
                     class="group relative bg-white p-3  shadow rounded-md border-b border-gray-300 hover:bg-gray-50">
                       <a href="#" class="text-sm">card items</a>
                         <button class="hidden absolute top-1 right-1 w-8 h-8 bg-gray-50 text-gray-600 group-hover:grid hover:bg-gray-200 hover:text-black place-content-center rounded-md">
