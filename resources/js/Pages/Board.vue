@@ -1,18 +1,45 @@
 <script>
-  import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+
+export default{
+  components: { Menu, MenuButton, MenuItems, MenuItem },
+}
 </script>
+
 <template>
   <div class="flex flex-col h-screen bg-blue-600">
     <!-- Header -->
       <header class="shrink-0 flex justify-between bg-white px-4 py-3">
         <a class="text-2xl font-black tracking-tight " href="/">kanboard</a>
-        <nav>
+        <nav class="flex items-center">
           <a class="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-100" href="#">My boards</a>
-          <button class="ml-3">
-            <img class="h-9 w-9 inline rounded-full" src="https://cdn.iconscout.com/icon/free/png-256/free-avatar-icon-download-in-svg-png-gif-file-formats--telegram-logo-man-ui-pack-miscellaneous-icons-840229.png?f=webp&w=256" alt="">
-          </button>
+           <!-- Dropdown Menu -->
+                  <Menu as="div" class="relative ml-3 z-10">
+                      <MenuButton class="hover:bg-gray-300 w-8 h-8 rounded-md grid place-content-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                      </MenuButton>
 
-
+                      <transition
+                        enter-active-class="transition transform duration-100 ease-out"
+                        enter-from-class="opacity-0 scale-90"
+                        enter-to-class="opacity-100 scale-100"
+                        leave-active-class="transition transform duration-100 ease-in"
+                        leave-from-class="opacity-100 scale-100"
+                        leave-to-class="opacity-0 scale-90"
+                      >
+                        <MenuItems class="origin-top-right mt-2 focus:outline-none absolute right-0 bg-white overflow-hidden rounded-md shadow-lg border w-48">
+                          <MenuItem>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">My Profile</a>
+                          </MenuItem>
+                          <MenuItem>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Logout</a>
+                          </MenuItem>
+                        </MenuItems>
+                      </transition>
+                  </Menu>
+                <!-- Dropdown Menu -->
         </nav>
       </header>
     <!-- Header -->
@@ -23,30 +50,74 @@
           <h1 class="text-2xl text-white font-bold">Board Title</h1>
           <div>
             <button class="inline-flex items-center bg-white/10 hover:bg-white/20 px-3 py-2 font-medium text-sm text-white rounded-md">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-            </svg>
-              <span class="ml-1">Settings</span>
+                <!-- Dropdown Menu -->
+                  <Menu as="div" class="relative z-10">
+
+                      <MenuButton class="hover:bg-gray-300 w-8 h-8 rounded-md grid place-content-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                      </MenuButton>
+
+                      <transition
+                        enter-active-class="transition transform duration-100 ease-out"
+                        enter-from-class="opacity-0 scale-90"
+                        enter-to-class="opacity-100 scale-100"
+                        leave-active-class="transition transform duration-100 ease-in"
+                        leave-from-class="opacity-100 scale-100"
+                        leave-to-class="opacity-0 scale-90"
+                      >
+                        <MenuItems class="origin-top-right mt-2 focus:outline-none absolute right-0 bg-white overflow-hidden rounded-md shadow-lg border w-48">
+                          <MenuItem>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Add Card</a>
+                          </MenuItem>
+                          <MenuItem>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Delete List</a>
+                          </MenuItem>
+                        </MenuItems>
+                      </transition>
+                  </Menu>
+                <!-- Dropdown Menu -->
+
+           <span class="ml-1">Settings</span>
             </button>
           </div>
         </div>
         <div class="flex-1 overflow-x-auto">
           <div class="inline-flex h-full items-start px-4 pb-4 space-x-4">
             <div
-            v-for="item in Array.from({length:7})" :key="item"
+            v-for="item in Array.from({length:3})" :key="item"
             class="w-72 max-h-full  bg-gray-200 flex flex-col rounded-md">
               <div class="flex items-center justify-between px-3 py-2">
                 <h3 class="text-sm font-semibold text-gray-700">Backlog</h3>
+                <!-- Dropdown Menu -->
+                  <Menu as="div" class="relative z-10">
 
-                <button class="hover:bg-gray-300 w-8 h-8 rounded-md grid place-content-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                  </svg>
+                      <MenuButton class="hover:bg-gray-300 w-8 h-8 rounded-md grid place-content-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                      </MenuButton>
 
-
-                </button>
-
-
+                      <transition
+                        enter-active-class="transition transform duration-100 ease-out"
+                        enter-from-class="opacity-0 scale-90"
+                        enter-to-class="opacity-100 scale-100"
+                        leave-active-class="transition transform duration-100 ease-in"
+                        leave-from-class="opacity-100 scale-100"
+                        leave-to-class="opacity-0 scale-90"
+                      >
+                        <MenuItems class="origin-top-left mt-2 focus:outline-none absolute left-0 bg-white overflow-hidden rounded-md shadow-lg border w-40">
+                          <MenuItem>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Add Card</a>
+                          </MenuItem>
+                          <MenuItem>
+                            <a href="#" class="block px-4 py-2 text-sm text-red-600">Delete List</a>
+                          </MenuItem>
+                        </MenuItems>
+                      </transition>
+                  </Menu>
+                <!-- Dropdown Menu -->
               </div>
               <div class="px-3 pb-3 flex flex-col overflow-hidden">
                 <div class="px-3 flex-1 overflow-y-auto">
@@ -71,6 +142,30 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z" />
                         </svg>
                       </button>
+
+                      <Menu as="div" class="relative">
+                      <MenuButton class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black rounded-full">
+                        <img class="w-10 h-10 inline rounded-full" src="https://pbs.twimg.com/profile_images/1333896976602193922/MtWztkxt_400x400.jpg" alt="">
+                      </MenuButton>
+
+                      <transition
+                        enter-active-class="transition transform duration-100 ease-out"
+                        enter-from-class="opacity-0 scale-90"
+                        enter-to-class="opacity-100 scale-100"
+                        leave-active-class="transition transform duration-100 ease-in"
+                        leave-from-class="opacity-100 scale-100"
+                        leave-to-class="opacity-0 scale-90"
+                      >
+                        <MenuItems class="origin-top-right mt-2 focus:outline-none absolute right-0 bg-white overflow-hidden rounded-md shadow-lg border w-48">
+                          <MenuItem>
+                            <a href="#"  class="block px-4 py-2 text-sm text-gray-700">My Profile</a>
+                          </MenuItem>
+                          <MenuItem disabled>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Settings</a>
+                          </MenuItem>
+                        </MenuItems>
+                      </transition>
+                      </Menu>
                     </li>
                   </ul>
                 </div>
@@ -94,7 +189,9 @@
                 </svg>
                 <span class="ml-1">Add Another List</span>
               </button>
-          </div>
+            </div>
+
+
 
 
           </div>
@@ -106,3 +203,5 @@
     </main>
   </div>
 </template>
+
+
