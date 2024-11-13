@@ -5,8 +5,8 @@ export default{
   components: { Menu, MenuButton, MenuItems, MenuItem,AuthenticatedLayout },
 }
 </script>
-
 <template>
+
  <AuthenticatedLayout>
       <div class="flex flex-col h-full bg-blue-600">
         <div class="shrink-0 flex justify-between items-center p-4">
@@ -32,10 +32,10 @@ export default{
                       >
                         <MenuItems class="origin-top-right mt-2 focus:outline-none absolute right-0 bg-white overflow-hidden rounded-md shadow-lg border w-48">
                           <MenuItem>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Add Card</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-left text-gray-700">Add Card</a>
                           </MenuItem>
                           <MenuItem>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Delete List</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-left text-gray-700">Delete List</a>
                           </MenuItem>
                         </MenuItems>
                       </transition>
@@ -80,7 +80,7 @@ export default{
                         </MenuItems>
                       </transition>
                   </Menu>
-                <!-- Dropdown Menu -->
+                <!-- #Dropdown Menu -->
               </div>
               <div class="px-3 pb-3 flex flex-col overflow-hidden">
                 <div class="px-3 flex-1 overflow-y-auto">
@@ -121,7 +121,7 @@ export default{
                       >
                         <MenuItems class="origin-top-right mt-2 focus:outline-none absolute right-0 bg-white overflow-hidden rounded-md shadow-lg border w-48">
                           <MenuItem>
-                            <a href="#"  class="block px-4 py-2 text-sm text-gray-700">My Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">My Profile</a>
                           </MenuItem>
                           <MenuItem disabled>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700">Settings</a>
@@ -133,18 +133,19 @@ export default{
                   </ul>
                 </div>
 
-
-              <div class="mt-3 px-3">
-                <button class="flex items-center p-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-300 w-full rounded-md">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-                  <span class="ml-1">Add Card</span>
-                </button>
-              </div>
+              <!-- Add Card Button -->
+                <div class="mt-3 px-3">
+                  <button class="flex items-center p-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-300 w-full rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    <span class="ml-1">Add Card</span>
+                  </button>
+                </div>
+               <!-- #Add Card Button -->
             </div>
             </div>
-
+            <!-- Another Button -->
             <div class="w-72">
               <button class="flex items-center bg-white/10 w-full hover:bg-white/20 text-white p-2 text-sm font-medium rounded-md">
                 <svg class="w-5 h-5 size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -153,14 +154,10 @@ export default{
                 <span class="ml-1">Add Another List</span>
               </button>
             </div>
-
-
+             <!-- #Another Button -->
 
 
           </div>
-
-
-
         </div>
       </div>
  </AuthenticatedLayout>

@@ -16,10 +16,10 @@ export default{
     <div>
         <div class="flex flex-col h-screen ">
           <!-- Header -->
-            <nav class="shrink-0 flex justify-between bg-white px-4 py-3">
+            <nav class="shrink-0 flex justify-between bg-white px-4 py-3 border-b">
               <!-- Logo -->
-              <a class="text-2xl font-black tracking-tight" :href="route('dashboard')">kanboard</a>
-              <!-- Logo -->
+              <a class="text-2xl font-black tracking-tight" :href="route('boards')">kanboard</a>
+              <!-- #Logo -->
               <!-- Nav -->
               <div class="flex items-center">
                 <NavLink class="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-100" href="#">My boards</NavLink>
@@ -58,16 +58,16 @@ export default{
                               </MenuItems>
                             </transition>
                         </Menu>
-                      <!-- Dropdown Menu -->
+                      <!-- #Dropdown Menu -->
               </div>
-              <!-- Nav -->
+              <!-- #Nav -->
             </nav>
-          <!-- Header -->
+          <!-- #Header -->
           <!-- Main -->
             <main class="flex-1 overflow-hidden">
                 <slot />
             </main>
-          <!-- Main -->
+          <!-- #Main -->
         </div>
     </div>
 </template>
