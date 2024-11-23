@@ -44,7 +44,7 @@ export default{
                                   <a
                                     href="#"
                                     :class="{'bg-gray-100':active}"
-                                    class="block px-4 py-2 text-sm text-gray-700">My Profile</a>
+                                    class="block px-4 py-2 text-sm text-gray-700">My Account</a>
                                 </MenuItem>
                                 <MenuItem v-slot="{active}">
 

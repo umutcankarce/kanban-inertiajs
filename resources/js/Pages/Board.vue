@@ -1,12 +1,8 @@
-<script>
+<script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
-export default{
-  components: { Menu, MenuButton, MenuItems, MenuItem,AuthenticatedLayout },
-}
 </script>
 <template>
-
  <AuthenticatedLayout>
       <div class="flex flex-col h-full bg-blue-600">
         <div class="shrink-0 flex justify-between items-center p-4">
