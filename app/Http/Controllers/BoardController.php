@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Board;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
@@ -14,8 +15,37 @@ class BoardController extends Controller
         ]);
     }
 
-    public function show()
+    public function show(Board $board)
     {
-        return Inertia::render('Board');
+        return Inertia::render('Board',[
+            'board' => $board
+        ]);
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "name" => "required"
+        ]);
+
+        Board::create([
+            'user_id' => auth()->user()->id,
+            'name' => $request->input('name')
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function update(Board $board)
+    {
+        request()->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        $board->update(['name' => request()->input('name')]);
+
+        return redirect()->back();
+    }
+
+
 }

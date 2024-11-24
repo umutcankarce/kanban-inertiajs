@@ -1,12 +1,18 @@
 <script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import BoardNameForm from "../Components/BoardNameForm.vue";
+
+const props = defineProps({
+  board : Object
+});
+
 </script>
 <template>
  <AuthenticatedLayout>
       <div class="flex flex-col h-full bg-blue-600">
-        <div class="shrink-0 flex justify-between items-center p-4">
-          <h1 class="text-2xl text-white font-bold">Board Title</h1>
+        <div class="shrink-0 flex flex-wrap justify-between items-center p-4">
+          <BoardNameForm :board="board" />
           <div>
             <button class="inline-flex items-center bg-white/10 hover:bg-white/20 px-3 py-2 font-medium text-sm text-white rounded-md">
                 <!-- Dropdown Menu -->
