@@ -2,6 +2,7 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
 import BoardNameForm from "../Components/BoardNameForm.vue";
+import CreateBoardListForm from "../Components/CreateBoardListForm.vue"
 
 const props = defineProps({
   board : Object
@@ -51,10 +52,10 @@ const props = defineProps({
         <div class="flex-1 overflow-x-auto">
           <div class="inline-flex h-full items-start px-4 pb-4 space-x-4">
             <div
-            v-for="item in Array.from({length:3})" :key="item"
+            v-for="list in board.lists" :key="list.id"
             class="w-72 max-h-full  bg-gray-200 flex flex-col rounded-md">
               <div class="flex items-center justify-between px-3 py-2">
-                <h3 class="text-sm font-semibold text-gray-700">Backlog</h3>
+                <h3 class="text-sm font-semibold text-gray-700">{{list.name}}</h3>
                 <!-- Dropdown Menu -->
                   <Menu as="div" class="relative z-10">
 
@@ -149,12 +150,7 @@ const props = defineProps({
             </div>
             <!-- Another Button -->
             <div class="w-72">
-              <button class="flex items-center bg-white/10 w-full hover:bg-white/20 text-white p-2 text-sm font-medium rounded-md">
-                <svg class="w-5 h-5 size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                <span class="ml-1">Add Another List</span>
-              </button>
+              <CreateBoardListForm :board="board" />
             </div>
              <!-- #Another Button -->
 
