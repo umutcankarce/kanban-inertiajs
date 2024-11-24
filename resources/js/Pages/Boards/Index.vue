@@ -63,7 +63,7 @@ function onSubmit(closePopover)
                   <form @submit.prevent="onSubmit(close)">
                     <label
                       class="block text-sm text-gray-600 font-medium mb-1"
-                      for="name">Board Name:</label>
+                      for="name">Board Name</label>
                     <input
                       id="name"
                       v-model="form.name"

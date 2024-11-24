@@ -20,7 +20,7 @@ const formRef  = ref();
   }
 
   function onSubmit(){
-    form.post(route("boardLists.store",{board:props.board.id}),{
+    form.post(route("cardLists.store",{board:props.board.id}),{
       onSuccess:() => {
         form.reset();
         inputNameRef.value.focus();
@@ -33,6 +33,7 @@ const formRef  = ref();
 <template>
   <form
     ref="formRef"
+    @keydown.esc="isShowingForm = false"
     v-if="isShowingForm"
     @submit.prevent="onSubmit()"
     class="p-3 bg-gray-200 rounded-md">

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\CardList;
 
 class Board extends Model
 {
@@ -19,6 +20,6 @@ class Board extends Model
     }
 
     public function lists(){
-        return $this->hasMany(BoardList::class);
+        return $this->hasMany(CardList::class);
     }
 }

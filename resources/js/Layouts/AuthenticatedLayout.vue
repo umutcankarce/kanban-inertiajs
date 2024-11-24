@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -7,9 +7,6 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-export default{
-  components: { Menu, MenuButton, MenuItems, MenuItem,NavLink },
-}
 </script>
 
 <template>
@@ -22,7 +19,7 @@ export default{
               <!-- #Logo -->
               <!-- Nav -->
               <div class="flex items-center">
-                <NavLink class="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-100" href="#">My boards</NavLink>
+                <NavLink class="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-100" href="#">My Boards</NavLink>
                 <!-- Dropdown Menu -->
                         <Menu as="div" class="relative ml-3 z-10">
                             <MenuButton class="hover:bg-gray-300 w-8 h-8 rounded-md grid place-content-center">
