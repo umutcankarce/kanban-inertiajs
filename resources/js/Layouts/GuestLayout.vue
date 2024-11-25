@@ -9,7 +9,7 @@ import { Link } from '@inertiajs/vue3';
         <div>
             <Link href="/">
               <!-- Logo -->
-              <a class="text-2xl font-black tracking-tight" :href="route('login')">kanboard</a>
+              <a class="text-3xl font-black tracking-tight" href="/">kanboard</a>
               <!-- #Logo -->
             </Link>
         </div>

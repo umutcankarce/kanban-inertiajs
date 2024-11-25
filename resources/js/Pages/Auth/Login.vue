@@ -39,7 +39,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="E-Mail" />
 
                 <TextInput
                     id="email"
@@ -48,6 +48,7 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autofocus
+                    placeholder="E-Mail"
                     autocomplete="username"
                 />
 
@@ -63,19 +64,11 @@ const submit = () => {
                     class="mt-1 block w-full"
                     v-model="form.password"
                     required
+                    placeholder="Password"
                     autocomplete="current-password"
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4 block">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600"
-                        >Remember me</span
-                    >
-                </label>
             </div>
 
             <div class="mt-4 flex items-center justify-end">
@@ -92,7 +85,7 @@ const submit = () => {
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Log in
+                    Login
                 </PrimaryButton>
             </div>
         </form>

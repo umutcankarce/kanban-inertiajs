@@ -66,10 +66,10 @@ const inputNameRef  = ref();
   </form>
 
    <button
-          @click="showForm()"
-          v-if="!isShowingForm"
-          class="flex items-center p-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-300 w-full rounded-md"
-        >
+      @click="showForm()"
+      v-if="!isShowingForm"
+      class="flex items-center p-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-300 w-full rounded-md"
+    >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -84,6 +84,6 @@ const inputNameRef  = ref();
               d="M12 4.5v15m7.5-7.5h-15"
             />
           </svg>
-          <span class="ml-1">Add Card</span>
-        </button>
+    <span class="ml-1">Add Card</span>
+    </button>
 </template>
