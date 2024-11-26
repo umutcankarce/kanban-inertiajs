@@ -3,12 +3,14 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import CardListItemCreateForm from "@/Pages/Boards/CardListItemCreateForm.vue";
 import CardListItem from "@/Pages/Boards/CardListItem.vue";
 import { ref } from 'vue';
+import Draggable from 'vuedraggable';
 
 const props = defineProps({
   list:Object,
 });
 
 const listRef = ref();
+const cards   = ref(props.list.cards);
 
 function onCardCreated(){
  listRef.value.scrollTop = listRef.value.scrollHeight;
@@ -70,15 +72,24 @@ function onCardCreated(){
       <div
         class="px-3 flex-1 overflow-y-auto"
         ref="listRef">
-        <ul class="space-y-3">
-          <CardListItem
-            v-for="card in list.cards"
-            :key="card.id"
-            :list="list"
-            :card="card"
-            class="group relative bg-white p-3 shadow rounded-md border-b border-gray-300 hover:bg-gray-50"
-          />
-        </ul>
+        <!-- Vue Draggable -->
+
+      <Draggable
+      v-model="cards"
+      group="cards"
+      item-key="id"
+      class="space-y-3"
+      tag="ul">
+
+      <!-- #item slot -->
+      <template #item="{ element }">
+        <CardListItem
+          :card="element"
+          class="group relative bg-white p-3 shadow rounded-md border-b border-gray-300 hover:bg-gray-50"
+        />
+      </template>
+      </Draggable>
+        <!-- #Vue Draggable -->
       </div>
 
       <!-- Add Card Button -->

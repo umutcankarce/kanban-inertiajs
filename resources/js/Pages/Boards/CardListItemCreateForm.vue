@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import {ref,nextTick} from "vue";
+import {ref,nextTick, computed} from "vue";
+import { store } from "@/store";
 
 const props = defineProps({
   list:Object
@@ -8,17 +9,17 @@ const props = defineProps({
 
 const emit = defineEmits(['created']);
 
+const isShowingForm = computed(() => props.list.id === store.value.listCreatingCardId);
+const inputNameRef  = ref();
+
 const form = useForm({
   title : '',
   card_list_id : props.list.id,
   board_id : props.list.board_id,
 });
 
-const isShowingForm = ref(false);
-const inputNameRef  = ref();
-
   async function showForm(){
-    isShowingForm.value = true;
+    store.value.listCreatingCardId = props.list.id;
     await nextTick();
     inputNameRef.value.focus();
   }
@@ -37,7 +38,7 @@ const inputNameRef  = ref();
 <template>
   <form
     v-if="isShowingForm"
-    @keydown.esc="isShowingForm = false"
+    @keydown.esc="store.listCreatingCardId = null"
     @submit.prevent="onSubmit()">
     <textarea
       v-model="form.title"
@@ -45,7 +46,7 @@ const inputNameRef  = ref();
       rows="3"
       @keydown.enter.prevent="onSubmit()"
       class="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring-blue-400"
-      placeholder="Enter card title..."></textarea>
+      placeholder="Enter Card Title"></textarea>
 
     <div class="mt-2 space-x-2">
       <button
@@ -57,7 +58,7 @@ const inputNameRef  = ref();
 
       <button
         type="button"
-        @click="isShowingForm = false"
+        @click="store.listCreatingCardId = null"
         class="px-4 py-2 text-sm font-medium  hover:text-black rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 focus:outline-none"
         >
         Cancel
