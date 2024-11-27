@@ -2,7 +2,9 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import CardListItemCreateForm from "@/Pages/Boards/CardListItemCreateForm.vue";
 import CardListItem from "@/Pages/Boards/CardListItem.vue";
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { Inertia } from '@inertiajs/inertia';
+
 import Draggable from 'vuedraggable';
 
 const props = defineProps({
@@ -12,8 +14,39 @@ const props = defineProps({
 const listRef = ref();
 const cards   = ref(props.list.cards);
 
+
+watch(() => props.list.cards,(newCards) => cards.value = newCards);
+
 function onCardCreated(){
  listRef.value.scrollTop = listRef.value.scrollHeight;
+}
+
+function onChange(e){
+  let item = e.added || e.moved;
+
+  if(!item) return;
+
+  let index = item.newIndex;
+
+  let prevCard = cards.value[index - 1];
+  let nextCard = cards.value[index + 1];
+  let card = cards.value[index];
+
+  let position = card.position;
+
+  if(prevCard && nextCard){
+    position = (prevCard.position + nextCard.position) / 2;
+  }else if(prevCard){
+    position = prevCard.position + (prevCard.position / 2);
+  }else if(nextCard){
+    position = nextCard.position / 2;
+  }
+
+  Inertia.put(route('cards.move',{card : card.id}),{
+    position : position,
+    cardListId : props.list.id,
+  });
+
 }
 
 </script>
@@ -73,20 +106,20 @@ function onCardCreated(){
         class="px-3 flex-1 overflow-y-auto"
         ref="listRef">
         <!-- Vue Draggable -->
-
-      <Draggable
-      v-model="cards"
-      group="cards"
-      item-key="id"
-      class="space-y-3"
-      tag="ul">
+        <Draggable
+          v-model="cards"
+          group="cards"
+          item-key="id"
+          class="space-y-3"
+          tag="ul"
+          drag-class="drag"
+          ghost-class="ghost"
+          @change="onChange"
+        >
 
       <!-- #item slot -->
       <template #item="{ element }">
-        <CardListItem
-          :card="element"
-          class="group relative bg-white p-3 shadow rounded-md border-b border-gray-300 hover:bg-gray-50"
-        />
+        <CardListItem :card="element" />
       </template>
       </Draggable>
         <!-- #Vue Draggable -->

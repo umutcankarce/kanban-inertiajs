@@ -37,4 +37,19 @@ class CardController extends Controller
 
         return redirect()->back();
     }
+
+    public function move(Card $card)
+    {
+        request()->validate([
+            'cardListId' => ['required','exists:card_lists,id'],
+            'position' => ['required','numeric']
+        ]);
+
+        $card->update([
+            'card_list_id' => request()->input('cardListId'),
+            'position'     => round(request()->input('position'),5)
+        ]);
+
+        return redirect()->back();
+    }
 }

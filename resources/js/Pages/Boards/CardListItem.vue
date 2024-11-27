@@ -33,7 +33,8 @@ const form = useForm({
 </script>
 
 <template>
-  <li
+  <li>
+    <div
     class="group relative bg-white p-2 shadow rounded-md border-b border-gray-300 hover:bg-gray-50"
   >
  <form
@@ -48,24 +49,24 @@ const form = useForm({
       class="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring-blue-400"
       placeholder="Enter Card Title"></textarea>
 
-    <div class="mt-2 space-x-2">
-      <button
-        type="submit"
-        class="px-4 py-2 text-sm font-medium text-white bg-rose-600 hover:bg-rose-500 rounded-md shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 focus:outline-none"
-      >
-        Edit Card
-      </button>
-
-      <button
-
-        type="button"
-        @click="store.editingCardId = null"
-        class="px-4 py-2 text-sm font-medium  hover:text-black rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 focus:outline-none"
+      <div class="mt-2 space-x-2">
+        <button
+          type="submit"
+          class="px-4 py-2 text-sm font-medium text-white bg-rose-600 hover:bg-rose-500 rounded-md shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 focus:outline-none"
         >
-        Cancel
+          Edit Card
         </button>
+
+        <button
+
+          type="button"
+          @click="store.editingCardId = null"
+          class="px-4 py-2 text-sm font-medium  hover:text-black rounded-md focus:ring-2 focus:ring-offset-2 focus:ring-rose-500 focus:outline-none"
+          >
+          Cancel
+          </button>
     </div>
-  </form>
+    </form>
     <template v-if="!isShowingForm">
         <a href="#" class="text-sm">{{ card.title }}</a>
       <button
@@ -78,5 +79,20 @@ const form = useForm({
       </button>
     </template>
 
+  </div>
   </li>
 </template>
+
+<style scoped>
+.drag > div {
+  transform: rotate(5deg);
+}
+.ghost {
+  background: lightgray;
+  border-radius: 6px;
+}
+
+.ghost > div {
+  visibility: hidden;
+}
+</style>
